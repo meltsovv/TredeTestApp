@@ -1,0 +1,3010 @@
+{
+    "pipes": [],
+    "interfaces": [],
+    "injectables": [
+        {
+            "name": "BasketService",
+            "id": "injectable-BasketService-61e670fb674f11612ce7ae469aa59e6a",
+            "file": "src/app/core/services/basket.service.ts",
+            "properties": [
+                {
+                    "name": "basket",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Product[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 8
+                },
+                {
+                    "name": "isBasket",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                }
+            ],
+            "methods": [
+                {
+                    "name": "getAmount",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "number",
+                    "typeParameters": [],
+                    "line": 10,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\nimport { Product } from '../models/product';\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class BasketService {\n  basket: Product[] = [];\n  isBasket: boolean = false;\n  getAmount(): number {\n    let amount: number = 0;\n    this.basket.forEach((element: Product) => {\n      amount = amount + (element.discount? element.price * 0.8 : element.price)\n    });\n    return amount\n  }\n}\n",
+            "type": "injectable"
+        },
+        {
+            "name": "PageService",
+            "id": "injectable-PageService-5828c3e144d0e1914e6e7245142b4f57",
+            "file": "src/app/core/services/page.service.ts",
+            "properties": [
+                {
+                    "name": "page",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 10
+                },
+                {
+                    "name": "routes",
+                    "defaultValue": "['/',TypeProductEnum.Clothes,TypeProductEnum.Shoes,TypeProductEnum.Accessories]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                }
+            ],
+            "methods": [
+                {
+                    "name": "setPage",
+                    "args": [
+                        {
+                            "name": "router",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "router",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\nimport { TypeProductEnum } from '../models/type-product.enum';\n\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class PageService {\n  routes: string[] = ['/',TypeProductEnum.Clothes,TypeProductEnum.Shoes,TypeProductEnum.Accessories]\n  page: number = 0;\n\n  setPage(router: string) {\n    this.routes.forEach((element: string, index: number) => {\n        if (router === element) {\n          this.page = index;\n        }\n    });\n  }\n}\n",
+            "type": "injectable"
+        }
+    ],
+    "guards": [],
+    "interceptors": [],
+    "classes": [
+        {
+            "name": "Product",
+            "id": "class-Product-2265db5291d037fb3f81e4525d190f6c",
+            "file": "src/app/core/models/product.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "sourceCode": "export class Product {\n  id: string = '0';\n  type: string = '';\n  price: number = 0;\n  discount: boolean = false;\n  typeImg: string = '';\n  productImg: string = '';\n  description: string = '';\n  name: string = '';\n}\n",
+            "properties": [
+                {
+                    "name": "description",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 8
+                },
+                {
+                    "name": "discount",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
+                },
+                {
+                    "name": "id",
+                    "defaultValue": "'0'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "name",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                },
+                {
+                    "name": "price",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "productImg",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 7
+                },
+                {
+                    "name": "type",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                },
+                {
+                    "name": "typeImg",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 6
+                }
+            ],
+            "methods": [],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        }
+    ],
+    "directives": [],
+    "components": [
+        {
+            "name": "AdvertBlockComponent",
+            "id": "component-AdvertBlockComponent-d38886e6c7f4bba2eb6e5f0553feaab3",
+            "file": "src/app/modules/content/components/advert-block/advert-block.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-advert-block",
+            "styleUrls": [
+                "./advert-block.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./advert-block.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-advert-block',\n  templateUrl: './advert-block.component.html',\n  styleUrls: ['./advert-block.component.scss']\n})\nexport class AdvertBlockComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".advert-block {\n  padding-right: 7px;\n  .advert-img {\n    border-radius: 5px;\n    width: 100%;\n  }\n}\n.carousel {\n  padding-right: 7px;\n  .carousel-cell {\n    img {\n      border-radius: 5px;\n      width: fit-content;\n      height: 85%;\n    }\n    p {\n      padding-left: 5px;\n      transition: ease .6s;\n    }\n    p:hover {\n      transition: ease .6s;\n      padding-left: 10px;\n      width: fit-content;\n      z-index: 9999;\n      cursor: pointer;\n      color: rgb(55, 55, 55);\n    }\n  }\n}\n",
+                    "styleUrl": "./advert-block.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 8
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"advert-block\">\n  <img class='advert-img' src=\"https://cdn.pixabay.com/photo/2017/07/16/07/50/invitation-2508607_960_720.jpg 1x, https://cdn.pixabay.com/photo/2017/07/16/07/50/invitation-2508607_1280.jpg 2x\" alt=\"\">\n</div>\n<carousel class=\"carousel\"\n  [arrows]='false'\n  [height]=\"300\"\n  [cellWidth]=\"245\"\n  [autoplay]=\"true\"\n  [autoplayInterval]=\"5000\"\n  [pauseOnHover]=\"true\">\n  <div class=\"carousel-cell\">\n      <img src=\"https://cdn.pixabay.com/photo/2016/11/23/15/25/cabinet-1853504_960_720.jpg 1x, https://cdn.pixabay.com/photo/2016/11/23/15/25/cabinet-1853504_1280.jpg 2x\">\n      <p routerLink=\"/products/clothes\">Go to clothes</p>\n  </div>\n  <div class=\"carousel-cell\">\n      <img src=\"https://cdn.pixabay.com/photo/2013/03/14/21/36/shoes-93756_960_720.jpg 1x, https://cdn.pixabay.com/photo/2013/03/14/21/36/shoes-93756_1280.jpg 2x\">\n      <p routerLink=\"/products/shoes\">Go to shoes</p>\n  </div>\n  <div class=\"carousel-cell\">\n      <img src=\"https://cdn.pixabay.com/photo/2017/08/02/00/30/fashion-accessory-2569051_960_720.jpg 1x, https://cdn.pixabay.com/photo/2017/08/02/00/30/fashion-accessory-2569051_1280.jpg 2x\">\n      <p routerLink=\"/products/accessories\">Go to accessories</p>\n  </div>\n  <div class=\"carousel-cell\">\n      <img src=\"https://cdn.pixabay.com/photo/2016/11/23/15/25/cabinet-1853504_960_720.jpg 1x, https://cdn.pixabay.com/photo/2016/11/23/15/25/cabinet-1853504_1280.jpg 2x\">\n      <p routerLink=\"/products/clothes\">Go to clothes</p>\n  </div>\n  <div class=\"carousel-cell\">\n      <img src=\"https://cdn.pixabay.com/photo/2013/03/14/21/36/shoes-93756_960_720.jpg 1x, https://cdn.pixabay.com/photo/2013/03/14/21/36/shoes-93756_1280.jpg 2x\">\n      <p routerLink=\"/products/shoes\">Go to shoes</p>\n  </div>\n  <div class=\"carousel-cell\">\n      <img src=\"https://cdn.pixabay.com/photo/2017/08/02/00/30/fashion-accessory-2569051_960_720.jpg 1x, https://cdn.pixabay.com/photo/2017/08/02/00/30/fashion-accessory-2569051_1280.jpg 2x\">\n      <p routerLink=\"/products/accessories\">Go to accessories</p>\n  </div>\n  <div class=\"carousel-cell\">\n      <img src=\"https://cdn.pixabay.com/photo/2016/11/23/15/25/cabinet-1853504_960_720.jpg 1x, https://cdn.pixabay.com/photo/2016/11/23/15/25/cabinet-1853504_1280.jpg 2x\">\n      <p routerLink=\"/products/clothes\">Go to clothes</p>\n  </div>\n  <div class=\"carousel-cell\">\n      <img src=\"https://cdn.pixabay.com/photo/2013/03/14/21/36/shoes-93756_960_720.jpg 1x, https://cdn.pixabay.com/photo/2013/03/14/21/36/shoes-93756_1280.jpg 2x\">\n      <p routerLink=\"/products/shoes\">Go to shoes</p>\n  </div>\n  <div class=\"carousel-cell\">\n      <img src=\"https://cdn.pixabay.com/photo/2017/08/02/00/30/fashion-accessory-2569051_960_720.jpg 1x, https://cdn.pixabay.com/photo/2017/08/02/00/30/fashion-accessory-2569051_1280.jpg 2x\">\n      <p routerLink=\"/products/accessories\">Go to accessories</p>\n  </div>\n</carousel>\n\n"
+        },
+        {
+            "name": "AppComponent",
+            "id": "component-AppComponent-4538ede82ce5eac1147a5d9c3a149c1c",
+            "file": "src/app/app.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-root",
+            "styleUrls": [
+                "./app.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./app.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "title",
+                    "defaultValue": "'testApp'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss']\n})\nexport class AppComponent {\n  title = 'testApp';\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "\n",
+                    "styleUrl": "./app.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<router-outlet></router-outlet>\n"
+        },
+        {
+            "name": "BasketComponent",
+            "id": "component-BasketComponent-a79be9dfab73ccb392e92c4f33f9314e",
+            "file": "src/app/shared/basket/basket.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-basket",
+            "styleUrls": [
+                "./basket.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./basket.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "amount",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 10,
+                    "type": "number"
+                },
+                {
+                    "name": "countItem",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "number"
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 9,
+                    "type": "string"
+                },
+                {
+                    "name": "matBadgeColor",
+                    "defaultValue": "'warn'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "any"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 16,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-basket',\n  templateUrl: './basket.component.html',\n  styleUrls: ['./basket.component.scss']\n})\nexport class BasketComponent implements OnInit {\n  @Input() label: string = '';\n  @Input() amount: number = 0;\n  @Input() countItem: number = 0;\n  @Input() matBadgeColor: any = 'warn';\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".basket {\n  max-width: 170px;\n  display: flex;\n  padding: 0 16px;\n  justify-content: space-between;\n  .shopping-basket-icon {\n    cursor: pointer;\n    height: 40px;\n    width: 40px;\n    img{\n      width: 100%;\n    }\n  }\n}\n",
+                    "styleUrl": "./basket.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 12
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"basket\">\n  <div>\n    {{label}} <br>\n    {{amount.toFixed(2)}} $\n  </div>\n  <div class=\"shopping-basket-icon\" matBadge=\"{{countItem}}\" [matBadgeColor]=\"matBadgeColor\">\n    <img src=\"../../../assets/shopping_cart_black_24dp.svg\" alt=\"\">\n  </div>\n</div>\n"
+        },
+        {
+            "name": "ButtonComponent",
+            "id": "component-ButtonComponent-89b51fc64dae9c78742d4c8a51f17af5",
+            "file": "src/app/shared/button/button.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-button",
+            "styleUrls": [
+                "./button.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./button.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "background",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 10,
+                    "type": "string"
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 9,
+                    "type": "string"
+                },
+                {
+                    "name": "variant",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "any"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'app-button',\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss']\n})\nexport class ButtonComponent {\n  @Input() label: string = '';\n  @Input() background: string = '';\n  @Input() variant: any = '';\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "\n",
+                    "styleUrl": "./button.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<button mat-button [ngStyle]='{\"background-color\": background}' [color]='background' *ngIf='variant === \"default\"'>{{label}}</button>\n<button mat-raised-button [ngStyle]='{\"background-color\": background}'  [color]='background' *ngIf='variant === \"raised\"'>{{label}}</button>\n<button mat-stroked-button [ngStyle]='{\"background-color\": background}'  [color]='background' *ngIf='variant === \"stroked\"'>{{label}}</button>\n<button mat-flat-button [color]='background' *ngIf='variant === \"flat\"' >{{label}}</button>\n"
+        },
+        {
+            "name": "CardComponent",
+            "id": "component-CardComponent-7fe017870b89bfb26d7a11bc947034e9",
+            "file": "src/app/shared/card/card.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-card",
+            "styleUrls": [
+                "./card.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./card.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "product",
+                    "defaultValue": "new Product()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "Product"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "basket",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "BasketService",
+                    "optional": false,
+                    "description": "",
+                    "line": 17,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "imgBg",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 15
+                },
+                {
+                    "name": "newBasket",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Product[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "goToBasket",
+                    "args": [
+                        {
+                            "name": "product",
+                            "type": "Product",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 23,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "product",
+                            "type": "Product",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 19,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "open",
+                    "args": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 27,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "RemoveFromBasket",
+                    "args": [
+                        {
+                            "name": "product",
+                            "type": "Product",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 31,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "product",
+                            "type": "Product",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\nimport { Router } from '@angular/router';\nimport { Product } from 'src/app/core/models/product';\nimport { BasketService } from 'src/app/core/services/basket.service';\n\n@Component({\n  selector: 'app-card',\n  templateUrl: './card.component.html',\n  styleUrls: ['./card.component.scss']\n})\nexport class CardComponent implements OnInit {\n  @Input() product: Product = new Product();\n\n  newBasket: Product[] = [];\n  imgBg: string = ''\n\n  constructor(public basket: BasketService, private router: Router) { }\n\n  ngOnInit(): void {\n    this.imgBg = `url(${this.product.typeImg})`\n  }\n\n  goToBasket(product: Product): void {\n    this.basket.basket.push(product)\n  }\n\n  open(id:string) {\n    this.router.navigate([`/product/${id}`])\n  }\n\n  RemoveFromBasket(product: Product) {\n    this.basket.basket;\n    this.basket.basket.forEach(element => {\n      if (element !== product) {\n        this.newBasket.push(element);\n      }\n    });\n    this.basket.basket = this.newBasket;\n    this.newBasket = [];\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".example-card {\n  max-width: 400px;\n  min-width: 325px;\n}\n\n.example-header-image {\n  background-size: cover;\n}\n\n.discount {\n  color: #ff0000bf;\n  text-decoration: line-through;\n  margin-right: 20px;\n}\n\n.example-card {\n  max-width: 300px;\n  margin-bottom: 30px;\n  .image {\n    height: 220px;\n  }\n  p {\n    text-overflow: ellipsis;\n    overflow-x: hidden;\n    white-space: nowrap;\n  }\n}\n",
+                    "styleUrl": "./card.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "basket",
+                        "type": "BasketService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 15,
+                "jsdoctags": [
+                    {
+                        "name": "basket",
+                        "type": "BasketService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<mat-card class=\"example-card\">\n  <div (click)='open(product.id)' style=\"cursor: pointer;\">\n    <mat-card-header>\n      <div mat-card-avatar class=\"example-header-image\" [ngStyle]='{\"background-image\": imgBg}'></div>\n      <mat-card-title >{{product.name}}</mat-card-title>\n      <mat-card-subtitle ><span [ngClass]='product.discount?\"discount\":\"\"' >{{product.price.toFixed(2)}}$</span>     <span *ngIf='product.discount'>{{(product.price*0.8).toFixed(2)}}$</span></mat-card-subtitle>\n    </mat-card-header>\n    <img mat-card-image src=\"{{product.productImg}}\" alt=\"\" class=\"image\">\n    <mat-card-content>\n      <p>\n        {{product.description}}\n      </p>\n    </mat-card-content>\n  </div>\n  <mat-card-actions>\n    <app-button [label]=\"'Buy'\" [variant]=\"'default'\"></app-button>\n    <app-button [label]=\"'To Basket'\" [variant]=\"'default'\" (click)='goToBasket(product)' *ngIf='!basket.isBasket'></app-button>\n    <app-button [label]=\"'Remove'\" [variant]=\"'raised'\" [background]='\"accent\"' (click)='RemoveFromBasket(product)' *ngIf='basket.isBasket'></app-button>\n  </mat-card-actions>\n</mat-card>\n"
+        },
+        {
+            "name": "ContentComponent",
+            "id": "component-ContentComponent-76b434b0dd751a360f27073e5bed1993",
+            "file": "src/app/modules/content/content.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-content",
+            "styleUrls": [
+                "./content.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./content.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-content',\n  templateUrl: './content.component.html',\n  styleUrls: ['./content.component.scss']\n})\nexport class ContentComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".content {\n  display: flex;\n  .left-panel {\n    width: 80%;\n  }\n  .right-panel {\n    width: 20%;\n  }\n}\n",
+                    "styleUrl": "./content.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 8
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"column content\">\n  <div class=\"left-panel\">\n    <app-advert-block></app-advert-block>\n    <app-discount-block></app-discount-block>\n  </div>\n  <div class=\"right-panel\">\n    <app-right-panel></app-right-panel>\n  </div>\n</div>\n"
+        },
+        {
+            "name": "ContentLayoutComponent",
+            "id": "component-ContentLayoutComponent-bbbf2674dfbb1095b689907aabdad362",
+            "file": "src/app/layout/content-layout/content-layout.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-content-layout",
+            "styleUrls": [
+                "./content-layout.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./content-layout.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-content-layout',\n  templateUrl: './content-layout.component.html',\n  styleUrls: ['./content-layout.component.scss']\n})\nexport class ContentLayoutComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".page {\n  height: fit-content;\n  min-height: 100%;\n  display: flex;\n  flex-direction: column;\n  max-width: 1440px;\n  margin: auto;\n  box-shadow: #dddddd 0px 0px 24px -6px;\n}\n",
+                    "styleUrl": "./content-layout.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 8
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"page\">\n  <app-header></app-header>\n  <div class='main'>\n    <router-outlet></router-outlet>\n  </div>\n  <app-footer></app-footer>\n</div>\n"
+        },
+        {
+            "name": "DiscountBlockComponent",
+            "id": "component-DiscountBlockComponent-419374993af1d1bbf898bbe7a0f222b3",
+            "file": "src/app/modules/content/components/discount-block/discount-block.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-discount-block",
+            "styleUrls": [
+                "./discount-block.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./discount-block.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "products",
+                    "defaultValue": "products",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Product[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 14,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { Product } from 'src/app/core/models/product';\nimport { products } from '../../../../../assets/data';\n\n@Component({\n  selector: 'app-discount-block',\n  templateUrl: './discount-block.component.html',\n  styleUrls: ['./discount-block.component.scss']\n})\nexport class DiscountBlockComponent implements OnInit {\n  products: Product[] = products;\n  constructor() { }\n\n  ngOnInit(): void {\n    this.products = this.products.filter((el)=>el.discount)\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".product-list {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-between;\n}\n",
+                    "styleUrl": "./discount-block.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 11
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<h1>Discount 🎉</h1>\n<div class=\"product-list\">\n  <app-card *ngFor='let product of products' [product]='product'></app-card>\n</div>\n"
+        },
+        {
+            "name": "FooterComponent",
+            "id": "component-FooterComponent-868f3962f21c76b835aad91a76be5501",
+            "file": "src/app/layout/footer/footer.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-footer",
+            "styleUrls": [
+                "./footer.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./footer.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-footer',\n  templateUrl: './footer.component.html',\n  styleUrls: ['./footer.component.scss']\n})\nexport class FooterComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".footer {\n  bottom: 0;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  height: 70px;\n  padding: 10px 0;\n  background: #eef6ff;\n  color: rgba(0,0,0,.87);\n  font-size: 14px;\n  font-weight: 500;\n  .logo {\n    padding-left: 10px;\n    img {\n      cursor: pointer;\n      height: 70px;\n    }\n  }\n  .version {\n  }\n  .contact {\n    padding-right: 10px;\n    ul {\n      margin: 0;\n      li {\n        display: block;\n      }\n    }\n  }\n}\n",
+                    "styleUrl": "./footer.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 8
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"footer\">\n  <div class=\"logo\">\n    <img src=\"https://dynamic.brandcrowd.com/asset/logo/f2d16fcc-d4ff-4d88-8117-41dde626bbf6/logo-search-grid-desktop?v=637646573209000000\" alt=\"\" routerLink='/'>\n  </div>\n  <div class=\"version\">\n    Current Version: 12.2.8\n  </div>\n  <div class=\"contact\">\n    <ul>\n      <li>\n        <a>+323423423223</a>\n      </li>\n      <li>\n        email@gmail.com\n      </li>\n      <li>\n        Powered by Google LLC ©2010-2021 (Test).\n      </li>\n    </ul>\n  </div>\n</div>\n"
+        },
+        {
+            "name": "HeaderComponent",
+            "id": "component-HeaderComponent-56de581c0244df63654774cc84494d09",
+            "file": "src/app/layout/header/header.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-header",
+            "styleUrls": [
+                "./header.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./header.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "basket",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "BasketService",
+                    "optional": false,
+                    "description": "",
+                    "line": 24,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "control",
+                    "defaultValue": "new FormControl()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 19
+                },
+                {
+                    "name": "filteredProducts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<Product[]>",
+                    "optional": true,
+                    "description": "",
+                    "line": 22
+                },
+                {
+                    "name": "id",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 18
+                },
+                {
+                    "name": "pageService",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "PageService",
+                    "optional": false,
+                    "description": "",
+                    "line": 24,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "products",
+                    "defaultValue": "products",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Product[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 21
+                },
+                {
+                    "name": "routes",
+                    "defaultValue": "['/',TypeProductEnum.Clothes,TypeProductEnum.Shoes,TypeProductEnum.Accessories]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 20
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "filterProduct",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Product[]",
+                    "typeParameters": [],
+                    "line": 42,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        121
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 26,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "open",
+                    "args": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 47,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "id",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "routerChange",
+                    "args": [
+                        {
+                            "name": "ev",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 34,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "ev",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {Component, OnInit} from '@angular/core';\nimport {FormControl} from '@angular/forms';\nimport { Router } from '@angular/router';\nimport {Observable} from 'rxjs';\nimport {map, startWith} from 'rxjs/operators';\nimport { Product } from 'src/app/core/models/product';\nimport { TypeProductEnum } from 'src/app/core/models/type-product.enum';\nimport { BasketService } from 'src/app/core/services/basket.service';\nimport { PageService } from 'src/app/core/services/page.service';\nimport { products } from '../../../assets/data';\n\n@Component({\n  selector: 'app-header',\n  templateUrl: './header.component.html',\n  styleUrls: ['./header.component.scss']\n})\nexport class HeaderComponent implements OnInit {\n  id: string = '';\n  control = new FormControl();\n  routes: string[] = ['/',TypeProductEnum.Clothes,TypeProductEnum.Shoes,TypeProductEnum.Accessories]\n  products: Product[] = products;\n  filteredProducts?: Observable<Product[]>;\n\n  constructor(private router: Router, public basket: BasketService, public pageService: PageService) {}\n\n  ngOnInit(): void {\n    this.filteredProducts = this.control.valueChanges\n      .pipe(\n        startWith(''),\n        map(product => product ? this.filterProduct(product) : this.products.slice())\n      );\n  }\n\n  routerChange(ev: number): void {\n    if (ev === 0) {\n      this.router.navigate([this.routes[ev]])\n    } else {\n      this.router.navigate(['/products',this.routes[ev]])\n    }\n  }\n\n  private filterProduct(value: string): Product[] {\n    const filterValue = value.toLowerCase();\n    return this.products.filter(product => product.name.toLowerCase().includes(filterValue));\n  }\n\n  open(id:string) {\n    this.router.navigate([`/product/${id}`])\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "::ng-deep .mat-tab-list{\n  background: #eef6ff;\n}\n.header {\n  .header-top {\n    background: #eef6ff;\n    height: 100px;\n    display: flex;\n    justify-content: space-between;\n    .logo {\n      width: fit-content;\n      height: 100%;\n      img {\n        cursor: pointer;\n        height: 100%;\n      }\n    }\n    .auth-basket {\n      .basket {\n        display: flex;\n        padding: 0 16px;\n        justify-content: space-between;\n        .shopping-basket-icon {\n          cursor: pointer;\n          height: 40px;\n          width: 40px;\n          mat-icon{\n            font-size: 40px;\n          }\n        }\n      }\n    }\n  }\n  .header-bottom {\n    position: relative;\n    form {\n      position: absolute;\n      top: 0;\n      right: 0;\n      z-index: 999;\n      mat-icon {\n        position: absolute;\n        right: 10px;\n        top: 12px;\n        width: 24px;\n        height: 24px;\n      }\n      input {\n        border: none;\n        height: 48px;\n        width: 300px;\n        padding: 0 0 0 10px;\n        background: #fff;\n      }\n    }\n  }\n}\n",
+                    "styleUrl": "./header.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "basket",
+                        "type": "BasketService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "pageService",
+                        "type": "PageService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 22,
+                "jsdoctags": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "basket",
+                        "type": "BasketService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "pageService",
+                        "type": "PageService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<header class=\"column header\">\n  <div class=\"header-top\">\n    <div class=\"logo\">\n      <img src=\"https://dynamic.brandcrowd.com/asset/logo/f2d16fcc-d4ff-4d88-8117-41dde626bbf6/logo-search-grid-desktop?v=637646573209000000\" alt=\"\" routerLink='/'>\n    </div>\n    <div class=\"auth-basket\">\n      <div class=\"auth\">\n        <app-button [label]=\"'Login'\" [variant]=\"'default'\"></app-button> | <app-button [label]=\"'Register'\" [variant]=\"'default'\"></app-button>\n      </div>\n        <app-basket [label]='\"To basket\"' [amount]='basket.getAmount()' [matBadgeColor]='!basket.basket.length? \"accent\":\"warn\"' [countItem]='basket.basket.length' routerLink='products/basket'></app-basket>\n    </div>\n  </div>\n  <div class=\"header-bottom\">\n    <mat-tab-group mat-stretch-tabs  animationDuration=\"0ms\" (selectedIndexChange)=\"routerChange($event)\" [selectedIndex]=\"pageService.page\">\n      <mat-tab label=\"Home\" ></mat-tab>\n      <mat-tab label=\"Clothes\" ></mat-tab>\n      <mat-tab label=\"Shoes\" ></mat-tab>\n      <mat-tab label=\"Accessories\" ></mat-tab>\n      <mat-tab disabled ></mat-tab>\n    </mat-tab-group>\n    <form class=\"example-form\">\n      <mat-icon >search</mat-icon>\n      <input type=\"text\"\n             placeholder=\"Search for a product\"\n             [formControl]=\"control\"\n             [matAutocomplete]=\"auto\">\n      <mat-autocomplete #auto=\"matAutocomplete\">\n        <mat-option *ngFor=\"let product of filteredProducts | async\" [value]=\"product.name\" (click)='open(product.id)'>\n          <span>{{product.name}}</span> |\n          <small>Price: {{product.price.toFixed(2)}}$</small>\n        </mat-option>\n      </mat-autocomplete>\n    </form>\n  </div>\n</header>\n"
+        },
+        {
+            "name": "ProductComponent",
+            "id": "component-ProductComponent-9ea8d8f442b52796fa642d19374317f5",
+            "file": "src/app/modules/product/product.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-product",
+            "styleUrls": [
+                "./product.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./product.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-product',\n  templateUrl: './product.component.html',\n  styleUrls: ['./product.component.scss']\n})\nexport class ProductComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./product.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 8
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"column\">\n  <router-outlet></router-outlet>\n</div>\n"
+        },
+        {
+            "name": "ProductListComponent",
+            "id": "component-ProductListComponent-8cfe0561a5fe99aec94d7988befe8515",
+            "file": "src/app/modules/products/product-list/product-list.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-product-list",
+            "styleUrls": [
+                "./product-list.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./product-list.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "basketService",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "BasketService",
+                    "optional": false,
+                    "description": "",
+                    "line": 17,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "id",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 15
+                },
+                {
+                    "name": "products",
+                    "defaultValue": "products",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Product[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 16
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { ActivatedRoute, Router } from '@angular/router';\nimport { Product } from 'src/app/core/models/product';\nimport { TypeProductEnum } from 'src/app/core/models/type-product.enum';\nimport { BasketService } from 'src/app/core/services/basket.service';\nimport { PageService } from 'src/app/core/services/page.service';\nimport { products } from '../../../../assets/data';\n\n@Component({\n  selector: 'app-product-list',\n  templateUrl: './product-list.component.html',\n  styleUrls: ['./product-list.component.scss']\n})\nexport class ProductListComponent {\n  id: string = '';\n  products: Product[] = products;\n  constructor(private activatedRoute: ActivatedRoute, private router: Router, private pageService: PageService, public basketService: BasketService) {\n    router.events.subscribe(() => {\n      window.scrollTo({ top: 0, behavior: 'smooth' });\n      this.id = activatedRoute.snapshot.paramMap.get('id') || '';\n      pageService.setPage(this.id);\n      if (this.id === TypeProductEnum.Basket){\n        basketService.isBasket = true;\n      } else {\n        basketService.isBasket = false;\n        this.products = products.filter((el: Product)=> el.type === this.id);\n      }\n    })\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "h1 {\n  text-align: center;\n  font-size: 41;\n  text-transform: capitalize;\n}\n.product-list {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-around;\n}\n\nh2 {\n  text-align: center;\n}\n",
+                    "styleUrl": "./product-list.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "activatedRoute",
+                        "type": "ActivatedRoute",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "pageService",
+                        "type": "PageService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "basketService",
+                        "type": "BasketService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 16,
+                "jsdoctags": [
+                    {
+                        "name": "activatedRoute",
+                        "type": "ActivatedRoute",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "pageService",
+                        "type": "PageService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "basketService",
+                        "type": "BasketService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "templateData": "<h1>{{id}}</h1>\n<div class=\"product-list\" *ngIf='products.length && !basketService.isBasket'>\n  <app-card *ngFor='let product of products' [product]='product'></app-card>\n</div>\n<div class=\"product-list\" *ngIf='products.length && basketService.isBasket'>\n  <app-card *ngFor='let product of basketService.basket' [product]='product'></app-card>\n</div>\n<div *ngIf='!products.length'>\n  <h2>Here is empty!</h2>\n</div>\n<div *ngIf='!basketService.basket.length && basketService.isBasket'>\n  <h2>Here is empty!</h2>\n</div>\n"
+        },
+        {
+            "name": "ProductsComponent",
+            "id": "component-ProductsComponent-a92b9a701425a08ce99b18a4657ac03b",
+            "file": "src/app/modules/products/products.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-products",
+            "styleUrls": [
+                "./products.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./products.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-products',\n  templateUrl: './products.component.html',\n  styleUrls: ['./products.component.scss'],\n})\nexport class ProductsComponent  {}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./products.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<div class=\"column\">\n  <router-outlet></router-outlet>\n</div>\n"
+        },
+        {
+            "name": "RightPanelComponent",
+            "id": "component-RightPanelComponent-248b06b0cfe43bb3d1043001d2b71263",
+            "file": "src/app/modules/content/components/right-panel/right-panel.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-right-panel",
+            "styleUrls": [
+                "./right-panel.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./right-panel.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-right-panel',\n  templateUrl: './right-panel.component.html',\n  styleUrls: ['./right-panel.component.scss']\n})\nexport class RightPanelComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".about-us {\n  .item {\n    padding: 5px;\n    background-color: #fafafa;\n    border: 1px solid rgb(219 219 219 / 87%);\n    display: flex;\n    justify-content: space-between;\n    margin-bottom: 10px;\n    align-items: center;\n    border-radius: 5px;\n    .right {\n      width: 20%;\n      mat-icon{\n        width: 40px;\n        height: 40px;\n        font-size: 40px;\n      }\n    }\n    .left {\n      width: 80%;\n      color: rgb(36 36 36 / 87%);\n    }\n  }\n}\n.advert {\n  padding-left: 7px;\n  img {\n    border-radius: 5px;\n    width: 100%;\n  }\n}\n",
+                    "styleUrl": "./right-panel.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 8
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"about-us\">\n  <div class=\"item\">\n    <div class=\"right\">\n      <mat-icon>local_offer</mat-icon>\n    </div>\n    <div class=\"left\">\n      <h2>Discounts</h2>\n      <p>We often have a lot of discounts for more products</p>\n    </div>\n  </div>\n  <div class=\"item\">\n    <div class=\"right\">\n      <mat-icon>local_shipping</mat-icon>\n    </div>\n    <div class=\"left\">\n      <h2>FREE Delivery</h2>\n      <p>Within Ukraine</p>\n    </div>\n  </div>\n  <div class=\"item\">\n    <div class=\"right\">\n      <mat-icon>verified</mat-icon>\n    </div>\n    <div class=\"left\">\n      <h2>Quality</h2>\n      <p>Verified quality</p>\n    </div>\n  </div>\n  <div class=\"item\">\n    <div class=\"right\">\n      <mat-icon>card_membership</mat-icon>\n    </div>\n    <div class=\"left\">\n      <h2>Loyalty</h2>\n      <p>Card membership</p>\n    </div>\n  </div>\n  <div class=\"advert\">\n    <img src=\"https://cdn.pixabay.com/photo/2018/04/29/16/23/boy-3360378_960_720.jpg 1x, https://cdn.pixabay.com/photo/2018/04/29/16/23/boy-3360378_1280.jpg 2x\" alt=\"\">\n    <h1>NEW COLLECTION</h1>\n  </div>\n  <div class=\"item\">\n    <div class=\"right\">\n      <mat-icon>reviews</mat-icon>\n    </div>\n    <div class=\"left\">\n      <h2>Reviews</h2>\n      <a href=\"https://www.reviews.io/\">Go to reviews</a>\n    </div>\n  </div>\n</div>\n\n\n"
+        },
+        {
+            "name": "SingleProductComponent",
+            "id": "component-SingleProductComponent-5c25bb3fb871272d2e38c82a2b774427",
+            "file": "src/app/modules/product/single-product/single-product.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-single-product",
+            "styleUrls": [
+                "./single-product.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./single-product.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "id",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
+                },
+                {
+                    "name": "product",
+                    "defaultValue": "new Product()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Product",
+                    "optional": false,
+                    "description": "",
+                    "line": 15
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "goToBasket",
+                    "args": [
+                        {
+                            "name": "product",
+                            "type": "Product",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 28,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "product",
+                            "type": "Product",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 25,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { ActivatedRoute, Router } from '@angular/router';\nimport { Product } from 'src/app/core/models/product';\nimport { TypeProductEnum } from 'src/app/core/models/type-product.enum';\nimport { BasketService } from 'src/app/core/services/basket.service';\nimport { PageService } from 'src/app/core/services/page.service';\nimport { products } from '../../../../assets/data';\n@Component({\n  selector: 'app-single-product',\n  templateUrl: './single-product.component.html',\n  styleUrls: ['./single-product.component.scss']\n})\nexport class SingleProductComponent implements OnInit {\n  id: string = '';\n  product: Product = new Product();\n  constructor(private activatedRoute: ActivatedRoute, private router: Router, private pageService: PageService, private basketService: BasketService) {\n    router.events.subscribe(() => {\n      window.scrollTo({ top: 0, behavior: 'smooth' });\n      this.id = activatedRoute.snapshot.paramMap.get('id') || '';\n      pageService.setPage(TypeProductEnum.Basket);\n      this.product = products.filter((el) => el.id === this.id)[0]\n    })\n  }\n\n  ngOnInit(): void {\n  }\n\n  goToBasket(product: Product): void {\n    this.basketService.basket.push(product)\n  }\n\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".example-card {\n  .flex {\n    display: flex;\n    justify-content: space-between;\n    .left, .right {\n      width:50%;\n    }\n    .left {\n      img {\n        width: 90%;\n      }\n    }\n  }\n}\n\n.discount {\n  color: #ff0000bf;\n  text-decoration: line-through;\n  margin-right: 20px;\n}\n",
+                    "styleUrl": "./single-product.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "activatedRoute",
+                        "type": "ActivatedRoute",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "pageService",
+                        "type": "PageService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "basketService",
+                        "type": "BasketService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 15,
+                "jsdoctags": [
+                    {
+                        "name": "activatedRoute",
+                        "type": "ActivatedRoute",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "pageService",
+                        "type": "PageService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "basketService",
+                        "type": "BasketService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<mat-card class=\"example-card\">\n  <mat-card-header>\n    <mat-card-title >{{product.name}}</mat-card-title>\n    <mat-card-subtitle ><span [ngClass]='product.discount?\"discount\":\"\"' >{{product.price.toFixed(2)}}$</span><span *ngIf='product.discount'>{{(product.price*0.8).toFixed(2)}}$</span></mat-card-subtitle>\n  </mat-card-header>\n  <div class=\"flex\">\n    <div class='left'>\n      <img mat-card-image src=\"{{product.productImg}}\" alt=\"\" class=\"image\">\n    </div>\n    <div class=\"right\">\n      <mat-card-content>\n        <p>\n          {{product.description}}\n        </p>\n      </mat-card-content>\n      <mat-card-actions>\n        <app-button [label]=\"'Buy'\" [variant]=\"'default'\"></app-button>\n        <app-button [label]=\"'To Basket'\" [variant]=\"'default'\" (click)='goToBasket(product)'></app-button>\n      </mat-card-actions>\n    </div>\n  </div>\n</mat-card>\n"
+        }
+    ],
+    "modules": [
+        {
+            "name": "AppMaterialModule",
+            "id": "module-AppMaterialModule-d0e30087772f116784633e3e6a22050a",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/app-material.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { MatAutocompleteModule } from '@angular/material/autocomplete';\nimport { MatBadgeModule } from '@angular/material/badge';\nimport { MatBottomSheetModule } from '@angular/material/bottom-sheet';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatButtonToggleModule } from '@angular/material/button-toggle';\nimport { MatCardModule } from '@angular/material/card';\nimport { MatCheckboxModule } from '@angular/material/checkbox';\nimport { MatChipsModule } from '@angular/material/chips';\nimport { MatDatepickerModule } from '@angular/material/datepicker';\nimport { MatDialogModule } from '@angular/material/dialog';\nimport { MatDividerModule } from '@angular/material/divider';\nimport { MatExpansionModule } from '@angular/material/expansion';\nimport { MatFormFieldModule } from '@angular/material/form-field';\nimport { MatGridListModule } from '@angular/material/grid-list';\nimport { MatIconModule } from '@angular/material/icon';\nimport { MatInputModule } from '@angular/material/input';\nimport { MatListModule } from '@angular/material/list';\nimport { MatMenuModule } from '@angular/material/menu';\nimport { MatPaginatorModule } from '@angular/material/paginator';\nimport { MatProgressBarModule } from '@angular/material/progress-bar';\nimport { MatProgressSpinnerModule } from '@angular/material/progress-spinner';\nimport { MatRadioModule } from '@angular/material/radio';\nimport { MatRippleModule, MatNativeDateModule } from '@angular/material/core';\nimport { MatSelectModule } from '@angular/material/select';\nimport { MatSidenavModule } from '@angular/material/sidenav';\nimport { MatSlideToggleModule } from '@angular/material/slide-toggle';\nimport { MatSliderModule } from '@angular/material/slider';\nimport { MatSnackBarModule } from '@angular/material/snack-bar';\nimport { MatSortModule } from '@angular/material/sort';\nimport { MatStepperModule } from '@angular/material/stepper';\nimport { MatTableModule } from '@angular/material/table';\nimport { MatTabsModule } from '@angular/material/tabs';\nimport { MatToolbarModule } from '@angular/material/toolbar';\nimport { MatTooltipModule } from '@angular/material/tooltip';\nimport { MatTreeModule } from '@angular/material/tree';\nimport { A11yModule } from '@angular/cdk/a11y';\nimport { BidiModule } from '@angular/cdk/bidi';\nimport { ClipboardModule } from '@angular/cdk/clipboard';\nimport { DragDropModule } from '@angular/cdk/drag-drop';\nimport { LayoutModule } from '@angular/cdk/layout';\nimport { ObserversModule } from '@angular/cdk/observers';\nimport { OverlayModule } from '@angular/cdk/overlay';\nimport { PlatformModule } from '@angular/cdk/platform';\nimport { PortalModule } from '@angular/cdk/portal';\nimport { CdkScrollableModule } from '@angular/cdk/scrolling';\nimport { CdkStepperModule } from '@angular/cdk/stepper';\nimport { CdkTableModule } from '@angular/cdk/table';\nimport { TextFieldModule } from '@angular/cdk/text-field';\nimport { CdkTreeModule } from '@angular/cdk/tree';\n\n@NgModule({\n  exports: [\n    MatAutocompleteModule,\n    MatBadgeModule,\n    MatBottomSheetModule,\n    MatButtonModule,\n    MatButtonToggleModule,\n    MatCardModule,\n    MatCheckboxModule,\n    MatChipsModule,\n    MatDatepickerModule,\n    MatDialogModule,\n    MatDividerModule,\n    MatExpansionModule,\n    MatFormFieldModule,\n    MatGridListModule,\n    MatIconModule,\n    MatInputModule,\n    MatListModule,\n    MatMenuModule,\n    MatPaginatorModule,\n    MatProgressBarModule,\n    MatProgressSpinnerModule,\n    MatRadioModule,\n    MatRippleModule,\n    MatSelectModule,\n    MatSidenavModule,\n    MatSlideToggleModule,\n    MatSliderModule,\n    MatSnackBarModule,\n    MatSortModule,\n    MatStepperModule,\n    MatTableModule,\n    MatTabsModule,\n    MatToolbarModule,\n    MatTooltipModule,\n    MatTreeModule,\n    MatNativeDateModule,\n    A11yModule,\n    BidiModule,\n    ClipboardModule,\n    DragDropModule,\n    LayoutModule,\n    ObserversModule,\n    OverlayModule,\n    PlatformModule,\n    PortalModule,\n    CdkScrollableModule,\n    CdkStepperModule,\n    CdkTableModule,\n    TextFieldModule,\n    CdkTreeModule,\n  ],\n})\nexport class AppMaterialModule {}\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "AppModule",
+            "id": "module-AppModule-e1579f164c1046c49981cd956276015f",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/app.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\n\nimport { AppRoutingModule } from './app-routing.module';\nimport { AppComponent } from './app.component';\nimport { ContentLayoutComponent } from './layout/content-layout/content-layout.component';\nimport { HeaderComponent } from './layout/header/header.component';\nimport { FooterComponent } from './layout/footer/footer.component';\nimport { AppMaterialModule } from './app-material.module';\nimport { BrowserAnimationsModule } from '@angular/platform-browser/animations';\nimport {FormsModule, ReactiveFormsModule} from '@angular/forms';\nimport { SharedModule } from './shared/shared.module';\n\n@NgModule({\n  declarations: [\n    AppComponent,\n    ContentLayoutComponent,\n    HeaderComponent,\n    FooterComponent,\n  ],\n  imports: [\n    BrowserModule,\n    AppRoutingModule,\n    AppMaterialModule,\n    BrowserAnimationsModule,\n    FormsModule,\n    ReactiveFormsModule,\n    SharedModule\n  ],\n  providers: [],\n  bootstrap: [AppComponent]\n})\nexport class AppModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        },
+                        {
+                            "name": "ContentLayoutComponent"
+                        },
+                        {
+                            "name": "FooterComponent"
+                        },
+                        {
+                            "name": "HeaderComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "AppMaterialModule"
+                        },
+                        {
+                            "name": "AppRoutingModule"
+                        },
+                        {
+                            "name": "SharedModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "AppRoutingModule",
+            "id": "module-AppRoutingModule-0beee23bd2fb96412dbc48809de3fa3f",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/app-routing.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { RouterModule, Routes } from '@angular/router';\nimport { ContentLayoutComponent } from './layout/content-layout/content-layout.component';\n\nconst routes: Routes = [\n  {\n    path: '',\n    component: ContentLayoutComponent,\n    children: [\n      {\n        path: '',\n        loadChildren: () =>\n          \"import('./modules/content/content.module').then((m) => m.ContentModule)\",\n      },\n      {\n        path: 'products',\n        loadChildren: () =>\n          \"import('./modules/products/products.module').then((m) => m.ProductsModule)\",\n      },\n      {\n        path: 'product',\n        loadChildren: () =>\n          \"import('./modules/product/product.module').then((m) => m.ProductModule)\",\n      },\n    ]\n  }\n];\n\n@NgModule({\n  imports: [RouterModule.forRoot(routes)],\n  exports: [RouterModule]\n})\nexport class AppRoutingModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "ContentModule",
+            "id": "module-ContentModule-d5043f1a8e1a83074f7be5ade37df1c8",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/modules/content/content.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ContentComponent } from './content.component';\nimport { ContentRoutingModule } from './content-routing.module';\nimport { RightPanelComponent } from './components/right-panel/right-panel.component';\nimport { AdvertBlockComponent } from './components/advert-block/advert-block.component';\nimport {IvyCarouselModule} from 'angular-responsive-carousel';\nimport { AppMaterialModule } from 'src/app/app-material.module';\nimport { DiscountBlockComponent } from './components/discount-block/discount-block.component';\nimport { SharedModule } from 'src/app/shared/shared.module';\n\n\n@NgModule({\n  declarations: [ContentComponent, RightPanelComponent, AdvertBlockComponent, DiscountBlockComponent],\n  imports: [\n    CommonModule,\n    ContentRoutingModule,\n    IvyCarouselModule,\n    AppMaterialModule,\n    SharedModule\n  ]\n})\nexport class ContentModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "AdvertBlockComponent"
+                        },
+                        {
+                            "name": "ContentComponent"
+                        },
+                        {
+                            "name": "DiscountBlockComponent"
+                        },
+                        {
+                            "name": "RightPanelComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "AppMaterialModule"
+                        },
+                        {
+                            "name": "ContentRoutingModule"
+                        },
+                        {
+                            "name": "SharedModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "ContentRoutingModule",
+            "id": "module-ContentRoutingModule-a2b6648859aa1785c8ad4684e4196d20",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/modules/content/content-routing.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { RouterModule, Routes } from '@angular/router';\nimport { ContentComponent } from './content.component';\n\nconst routes: Routes = [\n  {\n    path: '',\n    component: ContentComponent,\n\n  },\n];\n\n@NgModule({\n  imports: [RouterModule.forChild(routes)],\n  exports: [RouterModule],\n})\nexport class ContentRoutingModule {}\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "ProductModule",
+            "id": "module-ProductModule-df8753bba429c956cef0edffb7c16383",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/modules/product/product.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ProductComponent } from './product.component';\nimport { SingleProductComponent } from './single-product/single-product.component';\nimport { ProductRoutingModule } from './product-routing.module';\nimport { AppMaterialModule } from 'src/app/app-material.module';\nimport { SharedModule } from 'src/app/shared/shared.module';\n\n\n\n@NgModule({\n  declarations: [\n    ProductComponent,\n    SingleProductComponent\n  ],\n  imports: [\n    CommonModule,\n    ProductRoutingModule,\n    AppMaterialModule,\n    SharedModule\n  ]\n})\nexport class ProductModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "ProductComponent"
+                        },
+                        {
+                            "name": "SingleProductComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "AppMaterialModule"
+                        },
+                        {
+                            "name": "ProductRoutingModule"
+                        },
+                        {
+                            "name": "SharedModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "ProductRoutingModule",
+            "id": "module-ProductRoutingModule-c3de7a699bab33816cc1b737ae8c0c55",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/modules/product/product-routing.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { RouterModule, Routes } from '@angular/router';\nimport { ProductComponent } from './product.component';\nimport { SingleProductComponent } from './single-product/single-product.component';\n\n\nconst routes: Routes = [\n  {\n    path: '',\n    component: ProductComponent,\n    children: [\n      {\n        path: ':id',\n        component: SingleProductComponent,\n      },\n    ]\n  },\n];\n\n@NgModule({\n  imports: [RouterModule.forChild(routes)],\n  exports: [RouterModule],\n})\nexport class ProductRoutingModule {}\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "ProductsModule",
+            "id": "module-ProductsModule-74f150fe7793cc16144bba2f42c42524",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/modules/products/products.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ProductsRoutingModule } from './products-routing.module';\nimport { SharedModule } from 'src/app/shared/shared.module';\nimport { ProductListComponent } from './product-list/product-list.component';\nimport { ProductsComponent } from './products.component';\n\n@NgModule({\n  declarations: [ProductListComponent, ProductsComponent],\n  imports: [\n    CommonModule,\n    ProductsRoutingModule,\n    SharedModule\n  ]\n})\nexport class ProductsModule { }\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "ProductListComponent"
+                        },
+                        {
+                            "name": "ProductsComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "ProductsRoutingModule"
+                        },
+                        {
+                            "name": "SharedModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "ProductsRoutingModule",
+            "id": "module-ProductsRoutingModule-b042bcc64a82fa9337cd0a5be8a6005d",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/modules/products/products-routing.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { RouterModule, Routes } from '@angular/router';\nimport { ProductListComponent } from './product-list/product-list.component';\nimport { ProductsComponent } from './products.component';\n\n\nconst routes: Routes = [\n  {\n    path: '',\n    component: ProductsComponent,\n    children: [\n      {\n        path: ':id',\n        component: ProductListComponent,\n      },\n    ]\n  },\n];\n\n@NgModule({\n  imports: [RouterModule.forChild(routes)],\n  exports: [RouterModule],\n})\nexport class ProductsRoutingModule {}\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "SharedModule",
+            "id": "module-SharedModule-9aeddc59713597489b331f1b10bd52c5",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/shared/shared.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { CardComponent } from './card/card.component';\nimport { AppMaterialModule } from '../app-material.module';\nimport { ButtonComponent } from './button/button.component';\nimport { BasketComponent } from './basket/basket.component';\n\n\n@NgModule({\n  declarations:[\n    CardComponent,\n    ButtonComponent,\n    BasketComponent\n  ],\n  imports: [\n    CommonModule,\n    AppMaterialModule\n  ],\n  exports: [\n    CardComponent,\n    ButtonComponent,\n    BasketComponent\n  ]\n})\nexport class SharedModule {}\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "BasketComponent"
+                        },
+                        {
+                            "name": "ButtonComponent"
+                        },
+                        {
+                            "name": "CardComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "AppMaterialModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "BasketComponent"
+                        },
+                        {
+                            "name": "ButtonComponent"
+                        },
+                        {
+                            "name": "CardComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        }
+    ],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "BasketDefault",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Basket.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Buy",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "context",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/test.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+            },
+            {
+                "name": "EmptyBasket",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Basket.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.prod.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  production: true\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  production: false\n}"
+            },
+            {
+                "name": "HaveItems",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Basket.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Login",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "products",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/assets/data.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "[]",
+                "defaultValue": "[\n  {\n    id:'0',\n    type:\"shoes\",\n    price:10,\n    discount:true,\n    typeImg:\"https://cdn.pixabay.com/photo/2021/09/16/05/59/shoes-6628439_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2016/11/19/18/06/feet-1840619_960_720.jpg\",\n    description:\"The new collection on this summer for every day\",\n    name:\"Nike shoes\"\n  },\n  {\n    id:'1',\n    type:\"shoes\",\n    price:133,\n    discount:false,\n    typeImg:\"https://cdn.pixabay.com/photo/2021/09/16/05/59/shoes-6628439_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2016/09/02/11/10/boots-1638873_960_720.jpg\",\n    description:\"Good chooses for the walk in forest and have a rest. By now!\",\n    name:\"Walk shoes\"\n  },\n  {\n    id:'2',\n    type:\"shoes\",\n    price:155,\n    discount:true,\n    typeImg:\"https://cdn.pixabay.com/photo/2021/09/16/05/59/shoes-6628439_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2016/11/19/18/06/feet-1840619_960_720.jpg\",\n    description:\"The new collection on this summer for every day\",\n    name:\"Nike shoes\"\n  },\n  {\n    id:'3',\n    type:\"shoes\",\n    price:234,\n    discount:true,\n    typeImg:\"https://cdn.pixabay.com/photo/2021/09/16/05/59/shoes-6628439_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2016/09/02/11/10/boots-1638873_960_720.jpg\",\n    description:\"Good chooses for the walk in forest and have a rest. By now!\",\n    name:\"Walk shoes\"\n  },\n  {\n    id:'4',\n    type:\"shoes\",\n    price:231,\n    discount:false,\n    typeImg:\"https://cdn.pixabay.com/photo/2021/09/16/05/59/shoes-6628439_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2016/11/19/18/06/feet-1840619_960_720.jpg\",\n    description:\"The new collection on this summer for every day\",\n    name:\"Nike shoes\"\n  },\n  {\n    id:'5',\n    type:\"shoes\",\n    price:41,\n    discount:true,\n    typeImg:\"https://cdn.pixabay.com/photo/2021/09/16/05/59/shoes-6628439_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2016/09/02/11/10/boots-1638873_960_720.jpg\",\n    description:\"Good chooses for the walk in forest and have a rest. By now!\",\n    name:\"Walk shoes\"\n  },\n  {\n    id:'6',\n    type:\"shoes\",\n    price:125,\n    discount:true,\n    typeImg:\"https://cdn.pixabay.com/photo/2021/09/16/05/59/shoes-6628439_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2016/11/19/18/06/feet-1840619_960_720.jpg\",\n    description:\"The new collection on this summer for every day\",\n    name:\"Nike shoes\"\n  },\n  {\n    id:'7',\n    type:\"shoes\",\n    price:343,\n    discount:false,\n    typeImg:\"https://cdn.pixabay.com/photo/2021/09/16/05/59/shoes-6628439_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2016/09/02/11/10/boots-1638873_960_720.jpg\",\n    description:\"Good chooses for the walk in forest and have a rest. By now!\",\n    name:\"Walk shoes\"\n  },\n  {\n    id:'8',\n    type:\"clothes\",\n    price:346,\n    discount:true,\n    typeImg:\"https://cdn.pixabay.com/photo/2012/04/12/19/05/coat-30208_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2016/03/27/19/31/fashion-1283863_960_720.jpg\",\n    description:\"New sweater for your cool winter.\",\n    name:\"Sweater\"\n  },\n  {\n    id:'9',\n    type:\"clothes\",\n    price:72,\n    discount:false,\n    typeImg:\"https://cdn.pixabay.com/photo/2012/04/12/19/05/coat-30208_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2016/02/19/10/45/fashion-1209388_960_720.jpg\",\n    description:\"Grate blue jeans for your best summer\",\n    name:\"Jeans\"\n  },\n  {\n    id:'10',\n    type:\"clothes\",\n    price:32,\n    discount:true,\n    typeImg:\"https://cdn.pixabay.com/photo/2012/04/12/19/05/coat-30208_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2015/08/29/01/18/closet-912694_960_720.jpg\",\n    description:\"Huge selections different colorful robe\",\n    name:\"Blue Robe\"\n  },\n  {\n    id:'11',\n    type:\"clothes\",\n    price:92,\n    discount:false,\n    typeImg:\"https://cdn.pixabay.com/photo/2012/04/12/19/05/coat-30208_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2015/08/29/01/18/closet-912694_960_720.jpg\",\n    description:\"Huge selections different colorful robe\",\n    name:\"Green Robe\"\n  },\n  {\n    id:'12',\n    type:\"clothes\",\n    price:82,\n    discount:true,\n    typeImg:\"https://cdn.pixabay.com/photo/2012/04/12/19/05/coat-30208_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2016/03/27/19/31/fashion-1283863_960_720.jpg\",\n    description:\"New sweater for your cool winter.\",\n    name:\"Sweater\"\n  },\n  {\n    id:'13',\n    type:\"clothes\",\n    price:95,\n    discount:false,\n    typeImg:\"https://cdn.pixabay.com/photo/2012/04/12/19/05/coat-30208_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2016/02/19/10/45/fashion-1209388_960_720.jpg\",\n    description:\"Grate blue jeans for your best summer\",\n    name:\"Jeans\"\n  },\n  {\n    id:'14',\n    type:\"clothes\",\n    price:72,\n    discount:true,\n    typeImg:\"https://cdn.pixabay.com/photo/2012/04/12/19/05/coat-30208_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2015/08/29/01/18/closet-912694_960_720.jpg\",\n    description:\"Huge selections different colorful robe\",\n    name:\"Gray Robe\"\n  },\n  {\n    id:'15',\n    type:\"clothes\",\n    price:42,\n    discount:false,\n    typeImg:\"https://cdn.pixabay.com/photo/2012/04/12/19/05/coat-30208_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2015/08/29/01/18/closet-912694_960_720.jpg\",\n    description:\"Huge selections different colorful robe\",\n    name:\"Milk Robe\"\n  },\n  {\n    id:'16',\n    type:\"clothes\",\n    price:69,\n    discount:true,\n    typeImg:\"https://cdn.pixabay.com/photo/2012/04/12/19/05/coat-30208_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2016/02/19/10/45/fashion-1209388_960_720.jpg\",\n    description:\"Grate blue jeans for your best summer\",\n    name:\"Jeans\"\n  },\n\n  {\n    id:'17',\n    type:\"accessories\",\n    price:13,\n    discount:false,\n    typeImg:\"https://cdn.pixabay.com/photo/2012/04/26/18/44/watch-42803_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2016/03/27/19/33/sunset-1283872_960_720.jpg\",\n    description:\"For beach\",\n    name:\"Sunglasses\"\n  },\n  {\n    id:'18',\n    type:\"accessories\",\n    price:49,\n    discount:true,\n    typeImg:\"https://cdn.pixabay.com/photo/2012/04/26/18/44/watch-42803_960_720.png\",\n    productImg:\"https://assets.sunglasshut.com/is/image/LuxotticaRetail/8056597489478__STD__shad__qt.png?impolicy=SGH_bgtransparent\",\n    description:\"From the rock revolution of the ‘60s, to the art scene of the ‘80s, to the forefront of hip-hop culture – Wayfarer has become a true icon across ever changing horizons and the journey continues with the latest in wearable tech.\",\n    name:\"RAY-BAN\"\n  },\n  {\n    id:'19',\n    type:\"accessories\",\n    price:94,\n    discount:false,\n    typeImg:\"https://cdn.pixabay.com/photo/2012/04/26/18/44/watch-42803_960_720.png\",\n    productImg:\"https://assets.sunglasshut.com/is/image/LuxotticaRetail/8056597489478__STD__shad__qt.png?impolicy=SGH_bgtransparent\",\n    description:\"From the rock revolution of the ‘60s, to the art scene of the ‘80s, to the forefront of hip-hop culture – Wayfarer has become a true icon across ever changing horizons and the journey continues with the latest in wearable tech.\",\n    name:\"RAY-BAN\"\n  },\n  {\n    id:'20',\n    type:\"accessories\",\n    price:52,\n    discount:true,\n    typeImg:\"https://cdn.pixabay.com/photo/2012/04/26/18/44/watch-42803_960_720.png\",\n    productImg:\"https://assets.sunglasshut.com/is/image/LuxotticaRetail/8056597489478__STD__shad__qt.png?impolicy=SGH_bgtransparent\",\n    description:\"From the rock revolution of the ‘60s, to the art scene of the ‘80s, to the forefront of hip-hop culture – Wayfarer has become a true icon across ever changing horizons and the journey continues with the latest in wearable tech.\",\n    name:\"RAY-BAN\"\n  },\n  {\n    id:'21',\n    type:\"accessories\",\n    price:12,\n    discount:false,\n    typeImg:\"https://cdn.pixabay.com/photo/2012/04/26/18/44/watch-42803_960_720.png\",\n    productImg:\"https://assets.sunglasshut.com/is/image/LuxotticaRetail/8056597489478__STD__shad__qt.png?impolicy=SGH_bgtransparent\",\n    description:\"From the rock revolution of the ‘60s, to the art scene of the ‘80s, to the forefront of hip-hop culture – Wayfarer has become a true icon across ever changing horizons and the journey continues with the latest in wearable tech.\",\n    name:\"RAY-BAN\"\n  },\n  {\n    id:'22',\n    type:\"accessories\",\n    price:21,\n    discount:true,\n    typeImg:\"https://cdn.pixabay.com/photo/2012/04/26/18/44/watch-42803_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2014/12/08/14/23/pocket-watch-560937_960_720.jpg\",\n    description:\"Fashion watch for men\",\n    name:\"Watch\"\n  },\n  {\n    id:'23',\n    type:\"accessories\",\n    price:30,\n    discount:false,\n    typeImg:\"https://cdn.pixabay.com/photo/2012/04/26/18/44/watch-42803_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2014/12/08/14/23/pocket-watch-560937_960_720.jpg\",\n    description:\"Fashion watch for men\",\n    name:\"Watch\"\n  },\n  {\n    id:'24',\n    type:\"accessories\",\n    price:63,\n    discount:true,\n    typeImg:\"https://cdn.pixabay.com/photo/2012/04/26/18/44/watch-42803_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2014/12/08/14/23/pocket-watch-560937_960_720.jpg\",\n    description:\"Fashion watch for men\",\n    name:\"Watch\"\n  },\n  {\n    id:'25',\n    type:\"accessories\",\n    price:83,\n    discount:false,\n    typeImg:\"https://cdn.pixabay.com/photo/2012/04/26/18/44/watch-42803_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2014/12/08/14/23/pocket-watch-560937_960_720.jpg\",\n    description:\"Fashion watch for men\",\n    name:\"Watch\"\n  }\n]"
+            },
+            {
+                "name": "Register",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Remove",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "require",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/test.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "literal type"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<ButtonComponent>",
+                "defaultValue": "(args) => ({\n  props: args,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Basket.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<BasketComponent>",
+                "defaultValue": "(args) => ({\n  props: args,\n})"
+            },
+            {
+                "name": "To_basket",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            }
+        ],
+        "functions": [],
+        "typealiases": [],
+        "enumerations": [
+            {
+                "name": "TypeProductEnum",
+                "childs": [
+                    {
+                        "name": "Accessories",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "accessories"
+                    },
+                    {
+                        "name": "Clothes",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "clothes"
+                    },
+                    {
+                        "name": "Shoes",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "shoes"
+                    },
+                    {
+                        "name": "Basket",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "basket"
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "file": "src/app/core/models/type-product.enum.ts"
+            }
+        ],
+        "groupedVariables": {
+            "src/stories/Basket.stories.ts": [
+                {
+                    "name": "BasketDefault",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Basket.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "EmptyBasket",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Basket.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "HaveItems",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Basket.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Basket.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<BasketComponent>",
+                    "defaultValue": "(args) => ({\n  props: args,\n})"
+                }
+            ],
+            "src/stories/Button.stories.ts": [
+                {
+                    "name": "Buy",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Login",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Register",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Remove",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<ButtonComponent>",
+                    "defaultValue": "(args) => ({\n  props: args,\n})"
+                },
+                {
+                    "name": "To_basket",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                }
+            ],
+            "src/test.ts": [
+                {
+                    "name": "context",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/test.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+                },
+                {
+                    "name": "require",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/test.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "literal type"
+                }
+            ],
+            "src/environments/environment.prod.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.prod.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  production: true\n}"
+                }
+            ],
+            "src/environments/environment.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  production: false\n}"
+                }
+            ],
+            "src/assets/data.ts": [
+                {
+                    "name": "products",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/assets/data.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[]",
+                    "defaultValue": "[\n  {\n    id:'0',\n    type:\"shoes\",\n    price:10,\n    discount:true,\n    typeImg:\"https://cdn.pixabay.com/photo/2021/09/16/05/59/shoes-6628439_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2016/11/19/18/06/feet-1840619_960_720.jpg\",\n    description:\"The new collection on this summer for every day\",\n    name:\"Nike shoes\"\n  },\n  {\n    id:'1',\n    type:\"shoes\",\n    price:133,\n    discount:false,\n    typeImg:\"https://cdn.pixabay.com/photo/2021/09/16/05/59/shoes-6628439_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2016/09/02/11/10/boots-1638873_960_720.jpg\",\n    description:\"Good chooses for the walk in forest and have a rest. By now!\",\n    name:\"Walk shoes\"\n  },\n  {\n    id:'2',\n    type:\"shoes\",\n    price:155,\n    discount:true,\n    typeImg:\"https://cdn.pixabay.com/photo/2021/09/16/05/59/shoes-6628439_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2016/11/19/18/06/feet-1840619_960_720.jpg\",\n    description:\"The new collection on this summer for every day\",\n    name:\"Nike shoes\"\n  },\n  {\n    id:'3',\n    type:\"shoes\",\n    price:234,\n    discount:true,\n    typeImg:\"https://cdn.pixabay.com/photo/2021/09/16/05/59/shoes-6628439_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2016/09/02/11/10/boots-1638873_960_720.jpg\",\n    description:\"Good chooses for the walk in forest and have a rest. By now!\",\n    name:\"Walk shoes\"\n  },\n  {\n    id:'4',\n    type:\"shoes\",\n    price:231,\n    discount:false,\n    typeImg:\"https://cdn.pixabay.com/photo/2021/09/16/05/59/shoes-6628439_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2016/11/19/18/06/feet-1840619_960_720.jpg\",\n    description:\"The new collection on this summer for every day\",\n    name:\"Nike shoes\"\n  },\n  {\n    id:'5',\n    type:\"shoes\",\n    price:41,\n    discount:true,\n    typeImg:\"https://cdn.pixabay.com/photo/2021/09/16/05/59/shoes-6628439_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2016/09/02/11/10/boots-1638873_960_720.jpg\",\n    description:\"Good chooses for the walk in forest and have a rest. By now!\",\n    name:\"Walk shoes\"\n  },\n  {\n    id:'6',\n    type:\"shoes\",\n    price:125,\n    discount:true,\n    typeImg:\"https://cdn.pixabay.com/photo/2021/09/16/05/59/shoes-6628439_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2016/11/19/18/06/feet-1840619_960_720.jpg\",\n    description:\"The new collection on this summer for every day\",\n    name:\"Nike shoes\"\n  },\n  {\n    id:'7',\n    type:\"shoes\",\n    price:343,\n    discount:false,\n    typeImg:\"https://cdn.pixabay.com/photo/2021/09/16/05/59/shoes-6628439_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2016/09/02/11/10/boots-1638873_960_720.jpg\",\n    description:\"Good chooses for the walk in forest and have a rest. By now!\",\n    name:\"Walk shoes\"\n  },\n  {\n    id:'8',\n    type:\"clothes\",\n    price:346,\n    discount:true,\n    typeImg:\"https://cdn.pixabay.com/photo/2012/04/12/19/05/coat-30208_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2016/03/27/19/31/fashion-1283863_960_720.jpg\",\n    description:\"New sweater for your cool winter.\",\n    name:\"Sweater\"\n  },\n  {\n    id:'9',\n    type:\"clothes\",\n    price:72,\n    discount:false,\n    typeImg:\"https://cdn.pixabay.com/photo/2012/04/12/19/05/coat-30208_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2016/02/19/10/45/fashion-1209388_960_720.jpg\",\n    description:\"Grate blue jeans for your best summer\",\n    name:\"Jeans\"\n  },\n  {\n    id:'10',\n    type:\"clothes\",\n    price:32,\n    discount:true,\n    typeImg:\"https://cdn.pixabay.com/photo/2012/04/12/19/05/coat-30208_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2015/08/29/01/18/closet-912694_960_720.jpg\",\n    description:\"Huge selections different colorful robe\",\n    name:\"Blue Robe\"\n  },\n  {\n    id:'11',\n    type:\"clothes\",\n    price:92,\n    discount:false,\n    typeImg:\"https://cdn.pixabay.com/photo/2012/04/12/19/05/coat-30208_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2015/08/29/01/18/closet-912694_960_720.jpg\",\n    description:\"Huge selections different colorful robe\",\n    name:\"Green Robe\"\n  },\n  {\n    id:'12',\n    type:\"clothes\",\n    price:82,\n    discount:true,\n    typeImg:\"https://cdn.pixabay.com/photo/2012/04/12/19/05/coat-30208_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2016/03/27/19/31/fashion-1283863_960_720.jpg\",\n    description:\"New sweater for your cool winter.\",\n    name:\"Sweater\"\n  },\n  {\n    id:'13',\n    type:\"clothes\",\n    price:95,\n    discount:false,\n    typeImg:\"https://cdn.pixabay.com/photo/2012/04/12/19/05/coat-30208_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2016/02/19/10/45/fashion-1209388_960_720.jpg\",\n    description:\"Grate blue jeans for your best summer\",\n    name:\"Jeans\"\n  },\n  {\n    id:'14',\n    type:\"clothes\",\n    price:72,\n    discount:true,\n    typeImg:\"https://cdn.pixabay.com/photo/2012/04/12/19/05/coat-30208_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2015/08/29/01/18/closet-912694_960_720.jpg\",\n    description:\"Huge selections different colorful robe\",\n    name:\"Gray Robe\"\n  },\n  {\n    id:'15',\n    type:\"clothes\",\n    price:42,\n    discount:false,\n    typeImg:\"https://cdn.pixabay.com/photo/2012/04/12/19/05/coat-30208_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2015/08/29/01/18/closet-912694_960_720.jpg\",\n    description:\"Huge selections different colorful robe\",\n    name:\"Milk Robe\"\n  },\n  {\n    id:'16',\n    type:\"clothes\",\n    price:69,\n    discount:true,\n    typeImg:\"https://cdn.pixabay.com/photo/2012/04/12/19/05/coat-30208_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2016/02/19/10/45/fashion-1209388_960_720.jpg\",\n    description:\"Grate blue jeans for your best summer\",\n    name:\"Jeans\"\n  },\n\n  {\n    id:'17',\n    type:\"accessories\",\n    price:13,\n    discount:false,\n    typeImg:\"https://cdn.pixabay.com/photo/2012/04/26/18/44/watch-42803_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2016/03/27/19/33/sunset-1283872_960_720.jpg\",\n    description:\"For beach\",\n    name:\"Sunglasses\"\n  },\n  {\n    id:'18',\n    type:\"accessories\",\n    price:49,\n    discount:true,\n    typeImg:\"https://cdn.pixabay.com/photo/2012/04/26/18/44/watch-42803_960_720.png\",\n    productImg:\"https://assets.sunglasshut.com/is/image/LuxotticaRetail/8056597489478__STD__shad__qt.png?impolicy=SGH_bgtransparent\",\n    description:\"From the rock revolution of the ‘60s, to the art scene of the ‘80s, to the forefront of hip-hop culture – Wayfarer has become a true icon across ever changing horizons and the journey continues with the latest in wearable tech.\",\n    name:\"RAY-BAN\"\n  },\n  {\n    id:'19',\n    type:\"accessories\",\n    price:94,\n    discount:false,\n    typeImg:\"https://cdn.pixabay.com/photo/2012/04/26/18/44/watch-42803_960_720.png\",\n    productImg:\"https://assets.sunglasshut.com/is/image/LuxotticaRetail/8056597489478__STD__shad__qt.png?impolicy=SGH_bgtransparent\",\n    description:\"From the rock revolution of the ‘60s, to the art scene of the ‘80s, to the forefront of hip-hop culture – Wayfarer has become a true icon across ever changing horizons and the journey continues with the latest in wearable tech.\",\n    name:\"RAY-BAN\"\n  },\n  {\n    id:'20',\n    type:\"accessories\",\n    price:52,\n    discount:true,\n    typeImg:\"https://cdn.pixabay.com/photo/2012/04/26/18/44/watch-42803_960_720.png\",\n    productImg:\"https://assets.sunglasshut.com/is/image/LuxotticaRetail/8056597489478__STD__shad__qt.png?impolicy=SGH_bgtransparent\",\n    description:\"From the rock revolution of the ‘60s, to the art scene of the ‘80s, to the forefront of hip-hop culture – Wayfarer has become a true icon across ever changing horizons and the journey continues with the latest in wearable tech.\",\n    name:\"RAY-BAN\"\n  },\n  {\n    id:'21',\n    type:\"accessories\",\n    price:12,\n    discount:false,\n    typeImg:\"https://cdn.pixabay.com/photo/2012/04/26/18/44/watch-42803_960_720.png\",\n    productImg:\"https://assets.sunglasshut.com/is/image/LuxotticaRetail/8056597489478__STD__shad__qt.png?impolicy=SGH_bgtransparent\",\n    description:\"From the rock revolution of the ‘60s, to the art scene of the ‘80s, to the forefront of hip-hop culture – Wayfarer has become a true icon across ever changing horizons and the journey continues with the latest in wearable tech.\",\n    name:\"RAY-BAN\"\n  },\n  {\n    id:'22',\n    type:\"accessories\",\n    price:21,\n    discount:true,\n    typeImg:\"https://cdn.pixabay.com/photo/2012/04/26/18/44/watch-42803_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2014/12/08/14/23/pocket-watch-560937_960_720.jpg\",\n    description:\"Fashion watch for men\",\n    name:\"Watch\"\n  },\n  {\n    id:'23',\n    type:\"accessories\",\n    price:30,\n    discount:false,\n    typeImg:\"https://cdn.pixabay.com/photo/2012/04/26/18/44/watch-42803_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2014/12/08/14/23/pocket-watch-560937_960_720.jpg\",\n    description:\"Fashion watch for men\",\n    name:\"Watch\"\n  },\n  {\n    id:'24',\n    type:\"accessories\",\n    price:63,\n    discount:true,\n    typeImg:\"https://cdn.pixabay.com/photo/2012/04/26/18/44/watch-42803_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2014/12/08/14/23/pocket-watch-560937_960_720.jpg\",\n    description:\"Fashion watch for men\",\n    name:\"Watch\"\n  },\n  {\n    id:'25',\n    type:\"accessories\",\n    price:83,\n    discount:false,\n    typeImg:\"https://cdn.pixabay.com/photo/2012/04/26/18/44/watch-42803_960_720.png\",\n    productImg:\"https://cdn.pixabay.com/photo/2014/12/08/14/23/pocket-watch-560937_960_720.jpg\",\n    description:\"Fashion watch for men\",\n    name:\"Watch\"\n  }\n]"
+                }
+            ]
+        },
+        "groupedFunctions": {},
+        "groupedEnumerations": {
+            "src/app/core/models/type-product.enum.ts": [
+                {
+                    "name": "TypeProductEnum",
+                    "childs": [
+                        {
+                            "name": "Accessories",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "accessories"
+                        },
+                        {
+                            "name": "Clothes",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "clothes"
+                        },
+                        {
+                            "name": "Shoes",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "shoes"
+                        },
+                        {
+                            "name": "Basket",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "basket"
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "file": "src/app/core/models/type-product.enum.ts"
+                }
+            ]
+        },
+        "groupedTypeAliases": {}
+    },
+    "routes": {
+        "name": "<root>",
+        "kind": "module",
+        "className": "AppModule",
+        "children": [
+            {
+                "name": "routes",
+                "filename": "src/app/app-routing.module.ts",
+                "module": "AppRoutingModule",
+                "children": [
+                    {
+                        "path": "",
+                        "component": "ContentLayoutComponent",
+                        "children": [
+                            {
+                                "path": "",
+                                "loadChildren": "./modules/content/content.module#ContentModule",
+                                "children": [
+                                    {
+                                        "kind": "module",
+                                        "children": [
+                                            {
+                                                "name": "routes",
+                                                "filename": "src/app/modules/content/content-routing.module.ts",
+                                                "module": "ContentRoutingModule",
+                                                "children": [
+                                                    {
+                                                        "path": "",
+                                                        "component": "ContentComponent"
+                                                    }
+                                                ],
+                                                "kind": "module"
+                                            }
+                                        ],
+                                        "module": "ContentModule"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": "products",
+                                "loadChildren": "./modules/products/products.module#ProductsModule",
+                                "children": [
+                                    {
+                                        "kind": "module",
+                                        "children": [
+                                            {
+                                                "name": "routes",
+                                                "filename": "src/app/modules/products/products-routing.module.ts",
+                                                "module": "ProductsRoutingModule",
+                                                "children": [
+                                                    {
+                                                        "path": "",
+                                                        "component": "ProductsComponent",
+                                                        "children": [
+                                                            {
+                                                                "path": ":id",
+                                                                "component": "ProductListComponent"
+                                                            }
+                                                        ]
+                                                    }
+                                                ],
+                                                "kind": "module"
+                                            }
+                                        ],
+                                        "module": "ProductsModule"
+                                    }
+                                ]
+                            },
+                            {
+                                "path": "product",
+                                "loadChildren": "./modules/product/product.module#ProductModule",
+                                "children": [
+                                    {
+                                        "kind": "module",
+                                        "children": [
+                                            {
+                                                "name": "routes",
+                                                "filename": "src/app/modules/product/product-routing.module.ts",
+                                                "module": "ProductRoutingModule",
+                                                "children": [
+                                                    {
+                                                        "path": "",
+                                                        "component": "ProductComponent",
+                                                        "children": [
+                                                            {
+                                                                "path": ":id",
+                                                                "component": "SingleProductComponent"
+                                                            }
+                                                        ]
+                                                    }
+                                                ],
+                                                "kind": "module"
+                                            }
+                                        ],
+                                        "module": "ProductModule"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "kind": "module"
+            }
+        ]
+    },
+    "coverage": {
+        "count": 0,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "src/app/app.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AppComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/models/product.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "Product",
+                "coveragePercent": 0,
+                "coverageCount": "0/9",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/services/basket.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "BasketService",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/core/services/page.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "PageService",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/layout/content-layout/content-layout.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ContentLayoutComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/layout/footer/footer.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "FooterComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/layout/header/header.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "HeaderComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/13",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/content/components/advert-block/advert-block.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AdvertBlockComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/content/components/discount-block/discount-block.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "DiscountBlockComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/content/components/right-panel/right-panel.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "RightPanelComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/content/content.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ContentComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/product/product.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ProductComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/product/single-product/single-product.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "SingleProductComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/products/product-list/product-list.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ProductListComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/products/products.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ProductsComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/basket/basket.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "BasketComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/button/button.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ButtonComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/card/card.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "CardComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/10",
+                "status": "low"
+            },
+            {
+                "filePath": "src/assets/data.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "products",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/environments/environment.prod.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/environments/environment.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Basket.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "BasketDefault",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Basket.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "EmptyBasket",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Basket.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "HaveItems",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Basket.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Buy",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Login",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Register",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Remove",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "To_basket",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "context",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "require",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            }
+        ]
+    }
+}

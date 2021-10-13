@@ -1,0 +1,9 @@
+.page {
+  height: fit-content;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  max-width: 1440px;
+  margin: auto;
+  box-shadow: #dddddd 0px 0px 24px -6px;
+}

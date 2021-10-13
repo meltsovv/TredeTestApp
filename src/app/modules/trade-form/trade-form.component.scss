@@ -1,0 +1,43 @@
+.flex {
+  display: flex;
+  justify-content: space-around;
+  mat-card{
+    // min-width: 300px;
+    width: 20%;
+    mat-card-content{
+      form {
+        div {
+          mat-form-field {
+            width: 100%;
+            mat-hint {
+              color: #e95353;
+            }
+          }
+        }
+      }
+    }
+  }
+  .mat-elevation-z8{
+    width: 70%;
+    table {
+      width: 100%;
+      .edit {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@media(max-width:850px) {
+  .flex {
+    flex-direction: column;
+    mat-card{
+      width: 95%;
+      margin: auto;
+    }
+    .mat-elevation-z8 {
+      margin-top: 20px;
+      width: 100%;
+    }
+  }
+}
